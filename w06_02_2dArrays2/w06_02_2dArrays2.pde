@@ -20,6 +20,7 @@ int gridW = 10;
 int gridH = 10;
 
 boolean[][] isRed = new boolean[gridW][gridH];
+float[][] size = new float[gridW][gridH];
 
 void setup() {
   size(800, 800);
@@ -28,8 +29,10 @@ void setup() {
     for (int j = 0; j < gridH; j++) {
       if (i >= gridW/2 && j >= gridH/2) {
         isRed[i][j] = true;
+        size[i][j] = 20;
       } else {
         isRed[i][j] = false;
+        size[i][j] = 50;
       }
     }
   }
@@ -45,12 +48,12 @@ void draw() {
       } else {
         fill(200, 200, 200);
       }
-      float w = width/gridW;
-      float h = height/gridH;
-      float xPos = i * width/gridW + w/2;
-      float yPos = j * height/gridH + h/2;
+      //float w = width/gridW;
+      //float h = height/gridH;
+      float xPos = i * width/gridW + size[i][j]/2;
+      float yPos = j * height/gridH + size[i][j]/2;
       
-      ellipse(xPos, yPos, w, h);
+      ellipse(xPos, yPos, size[i][j], size[i][j]);
     }
   }
 }
