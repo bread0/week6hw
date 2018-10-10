@@ -19,7 +19,7 @@ float[][] yPositions = new float[gridW][gridH];
 
 void setup() {
   size(800, 800);
-  //noStroke();
+  noStroke();
 
   for (int i = 0; i < gridW; i++) {
     for (int j = 0; j < gridH; j++) {
@@ -33,8 +33,10 @@ void draw() {
   background(20);
   for (int i = 0; i < gridW; i++) {
     for (int j = 0; j < gridH; j++) {
-      float s = 15;
+      float dist = dist(i, j, mouseX, mouseY);
+      float s = int(map(dist, 0, 15, i, j));
       ellipse(xPositions[i][j], yPositions[i][j], s, s);
+      
     }
   }
 }
