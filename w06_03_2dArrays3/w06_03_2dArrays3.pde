@@ -24,6 +24,7 @@ void setup() {
   for (int i = 0; i < gridW; i++) {
     for (int j = 0; j < gridH; j++) {
       angles[i][j] = random(360);
+      //map(angles[i][j], 0, 360, i, j);
     }
   }
 }
@@ -35,7 +36,7 @@ void draw() {
     for (int j = 0; j < gridH; j++) {
       pushMatrix();
       translate(i * width/gridW, j * height/gridH);
-      rotate(radians(angles[i][j]));
+      rotate(radians((frameCount/4)*angles[i][j]));
       line(-width/gridW*0.5, 0, width/gridW*0.5, 0);
       popMatrix();
     }
